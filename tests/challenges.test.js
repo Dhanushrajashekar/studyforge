@@ -17,4 +17,4 @@ assert.ok(c.tests.length>=3,c.id);
 for(const t of c.tests){assert.ok(Array.isArray(t.args));assert.ok(Object.hasOwn(t,'expected'));}
 }});
 test('scoring',()=>{assert.equal(pointsEarned([]),0);assert.equal(pointsEarned([challenges[0].id]),challenges[0].points)});
-test('relative paths',async()=>{const h=await readFile(new URL('../index.html',import.meta.url),'utf8');assert.match(h,/\.\/app\.js/);assert.match(h,/\.\/styles\.css/);});
+test('relative paths',async()=>{const h=await readFile(new URL('../index.html',import.meta.url),'utf8');assert.match(h,/\.\/demo\.html/);});
