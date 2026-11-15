@@ -1,50 +1,37 @@
 # StudyForge
 
-**A free, independent open-source JavaScript practice platform.** Work through short coding challenges, run tests in the browser, and track learning progress without signing up.
+Free open-source JavaScript practice with 30 challenges, five topic-based learning paths, hints, browser-based tests, and local progress export/import.
 
-## Features
+Website: https://dhanushrajashekar.github.io/studyforge/
 
-- **30 JavaScript challenges** spanning beginner, intermediate, and advanced difficulty.
-- **Learning paths** organised by topic: strings, arrays, maths, logic, and objects.
-- Built-in starter code, examples, optional hints, and per-test feedback.
-- Progress and code drafts saved locally in the current browser.
-- Export or import a JSON progress backup (including code drafts).
-- Responsive interface and keyboard shortcut **Ctrl/Cmd + Enter** to run tests.
-- No login or backend required.
+## Develop
 
-## Run locally
+Node.js 20+ is required; no package installations are needed.
 
-Requires Node.js 20+ and npm. No external packages or account are required.
-
-```bash
-npm run build
-# Open dist/index.html directly in your browser
-```
-
-Open the local URL shown by Vite. To verify or build:
-
-```bash
+```sh
 npm test
 npm run build
-
+python3 -m http.server 8000 -d dist
 ```
 
-## Deploy to GitHub Pages
+Visit http://localhost:8000/.
 
-1. Create a **public** repository and upload the contents of this directory to its root.
-2. Commit on the `main` branch, (the package has no external dependencies).
-3. In **Settings → Pages → Build and deployment**, select **GitHub Actions**.
-4. The `Deploy to GitHub Pages` workflow builds and publishes the site after pushes to `main`.
-5. The project's site URL is generally `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/` once GitHub confirms deployment.
+## Structure
 
-Publishing requires access to your own GitHub account; the project is not uploaded by this download.
+- `src/challenges.js`: original 30 challenges and scoring
+- `src/runner.js`: sandboxed iframe code runner
+- `src/app.js`: UI and local persistence
+- `src/styles.css`: responsive design
+- `scripts/build.mjs`: dependency-free build
+- `tests/challenges.test.js`: schema and smoke checks
+- `demo.html`: preserved historical standalone demo
 
-## Contribute
+## GitHub Pages
 
-See [CONTRIBUTING.md](CONTRIBUTING.md), [ROADMAP.md](ROADMAP.md), and the issue templates. New challenges must include a prompt, example, hint, starter function, and at least three tests. Contributions are reviewed by the repository maintainers.
+The workflow tests and builds on PRs and publishes `dist/` on each push to `main`. If Pages cannot be automatically activated, go to **Settings → Pages → Build and deployment → Source: GitHub Actions** and rerun the workflow. The public repository needs no paid plan.
 
-## Limitations and privacy
+## Privacy
 
-Only **JavaScript** is executed in this release; Python and SQL are future ideas, not implemented languages. The runtime uses a sandboxed iframe with a restrictive CSP, **not** a hardened hostile-code isolation system. Do not run untrusted code or paste secrets. No progress is sent to a StudyForge server; local browser storage can be cleared by the user or browser. Exported backups include drafts.
+Progress and drafts remain in browser localStorage; exported JSON contains code drafts. The runner is a sandboxed iframe, **not** a hardened isolation boundary. Never paste secrets or run untrusted code.
 
-See [SECURITY.md](SECURITY.md). Licensed under the [MIT License](LICENSE). No affiliation with any coding-assistant provider.
+See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), [ROADMAP.md](ROADMAP.md) and [LICENSE](LICENSE).
